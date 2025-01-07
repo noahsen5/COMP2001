@@ -1,0 +1,486 @@
+{
+    "swagger": "2.0",
+    "info": {
+      "version": "1.0.0",
+      "title": "Trail Management API",
+      "description": "API for managing trails, trail logs, trail sections, and wildlife sightings."
+    },
+    "host": "127.0.0.1:5000",
+    "basePath": "/api",
+    "schemes": ["http"],
+    "paths": {
+      "/trail": {
+        "post": {
+          "summary": "Create a new trail",
+          "parameters": [
+            {
+              "in": "body",
+              "name": "body",
+              "required": true,
+              "schema": {
+                "$ref": "#/definitions/Trail"
+              }
+            }
+          ],
+          "responses": {
+            "201": {
+              "description": "Trail created successfully"
+            },
+            "400": {
+              "description": "Invalid data provided"
+            }
+          }
+        },
+        "get": {
+          "summary": "Get all trails",
+          "responses": {
+            "200": {
+              "description": "List of all trails",
+              "schema": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/definitions/Trail"
+                }
+              }
+            }
+          }
+        }
+      },
+      "/trail/{TrailID}": {
+        "get": {
+          "summary": "Get a specific trail",
+          "parameters": [
+            {
+              "in": "path",
+              "name": "TrailID",
+              "required": true,
+              "type": "integer"
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "Details of the trail",
+              "schema": {
+                "$ref": "#/definitions/Trail"
+              }
+            },
+            "404": {
+              "description": "Trail not found"
+            }
+          }
+        },
+        "put": {
+          "summary": "Update a specific trail",
+          "parameters": [
+            {
+              "in": "path",
+              "name": "TrailID",
+              "required": true,
+              "type": "integer"
+            },
+            {
+              "in": "body",
+              "name": "body",
+              "required": true,
+              "schema": {
+                "$ref": "#/definitions/Trail"
+              }
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "Trail updated successfully"
+            },
+            "404": {
+              "description": "Trail not found"
+            }
+          }
+        },
+        "delete": {
+          "summary": "Delete a specific trail",
+          "parameters": [
+            {
+              "in": "path",
+              "name": "TrailID",
+              "required": true,
+              "type": "integer"
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "Trail deleted successfully"
+            },
+            "404": {
+              "description": "Trail not found"
+            }
+          }
+        }
+      },
+      "/traillog": {
+        "post": {
+          "summary": "Create a new trail log",
+          "parameters": [
+            {
+              "in": "body",
+              "name": "body",
+              "required": true,
+              "schema": {
+                "$ref": "#/definitions/TrailLog"
+              }
+            }
+          ],
+          "responses": {
+            "201": {
+              "description": "Trail log created successfully"
+            },
+            "400": {
+              "description": "Invalid data provided"
+            }
+          }
+        },
+        "get": {
+          "summary": "Get all trail logs",
+          "responses": {
+            "200": {
+              "description": "List of all trail logs",
+              "schema": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/definitions/TrailLog"
+                }
+              }
+            }
+          }
+        }
+      },
+      "/traillog/{LogID}": {
+        "get": {
+          "summary": "Get a specific trail log",
+          "parameters": [
+            {
+              "in": "path",
+              "name": "LogID",
+              "required": true,
+              "type": "integer"
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "Details of the trail log",
+              "schema": {
+                "$ref": "#/definitions/TrailLog"
+              }
+            },
+            "404": {
+              "description": "Trail log not found"
+            }
+          }
+        },
+        "put": {
+          "summary": "Update a specific trail log",
+          "parameters": [
+            {
+              "in": "path",
+              "name": "LogID",
+              "required": true,
+              "type": "integer"
+            },
+            {
+              "in": "body",
+              "name": "body",
+              "required": true,
+              "schema": {
+                "$ref": "#/definitions/TrailLog"
+              }
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "Trail log updated successfully"
+            },
+            "404": {
+              "description": "Trail log not found"
+            }
+          }
+        },
+        "delete": {
+          "summary": "Delete a specific trail log",
+          "parameters": [
+            {
+              "in": "path",
+              "name": "LogID",
+              "required": true,
+              "type": "integer"
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "Trail log deleted successfully"
+            },
+            "404": {
+              "description": "Trail log not found"
+            }
+          }
+        }
+      },
+      "/trailsection": {
+        "post": {
+          "summary": "Create a new trail section",
+          "parameters": [
+            {
+              "in": "body",
+              "name": "body",
+              "required": true,
+              "schema": {
+                "$ref": "#/definitions/TrailSection"
+              }
+            }
+          ],
+          "responses": {
+            "201": {
+              "description": "Trail section created successfully"
+            },
+            "400": {
+              "description": "Invalid data provided"
+            }
+          }
+        },
+        "get": {
+          "summary": "Get all trail sections",
+          "responses": {
+            "200": {
+              "description": "List of all trail sections",
+              "schema": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/definitions/TrailSection"
+                }
+              }
+            }
+          }
+        }
+      },
+      "/trailsection/{SectionID}": {
+        "get": {
+          "summary": "Get a specific trail section",
+          "parameters": [
+            {
+              "in": "path",
+              "name": "SectionID",
+              "required": true,
+              "type": "integer"
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "Details of the trail section",
+              "schema": {
+                "$ref": "#/definitions/TrailSection"
+              }
+            },
+            "404": {
+              "description": "Trail section not found"
+            }
+          }
+        },
+        "put": {
+          "summary": "Update a specific trail section",
+          "parameters": [
+            {
+              "in": "path",
+              "name": "SectionID",
+              "required": true,
+              "type": "integer"
+            },
+            {
+              "in": "body",
+              "name": "body",
+              "required": true,
+              "schema": {
+                "$ref": "#/definitions/TrailSection"
+              }
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "Trail section updated successfully"
+            },
+            "404": {
+              "description": "Trail section not found"
+            }
+          }
+        },
+        "delete": {
+          "summary": "Delete a specific trail section",
+          "parameters": [
+            {
+              "in": "path",
+              "name": "SectionID",
+              "required": true,
+              "type": "integer"
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "Trail section deleted successfully"
+            },
+            "404": {
+              "description": "Trail section not found"
+            }
+          }
+        }
+      },
+      "/wildlife": {
+        "post": {
+          "summary": "Create a new wildlife entry",
+          "parameters": [
+            {
+              "in": "body",
+              "name": "body",
+              "required": true,
+              "schema": {
+                "$ref": "#/definitions/Wildlife"
+              }
+            }
+          ],
+          "responses": {
+            "201": {
+              "description": "Wildlife entry created successfully"
+            },
+            "400": {
+              "description": "Invalid data provided"
+            }
+          }
+        },
+        "get": {
+          "summary": "Get all wildlife entries",
+          "responses": {
+            "200": {
+              "description": "List of all wildlife entries",
+              "schema": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/definitions/Wildlife"
+                }
+              }
+            }
+          }
+        }
+      },
+      "/wildlife/{SightingID}": {
+        "get": {
+          "summary": "Get a specific wildlife entry",
+          "parameters": [
+            {
+              "in": "path",
+              "name": "SightingID",
+              "required": true,
+              "type": "integer"
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "Details of the wildlife entry",
+              "schema": {
+                "$ref": "#/definitions/Wildlife"
+              }
+            },
+            "404": {
+              "description": "Wildlife entry not found"
+            }
+          }
+        },
+        "put": {
+          "summary": "Update a specific wildlife entry",
+          "parameters": [
+            {
+              "in": "path",
+              "name": "SightingID",
+              "required": true,
+              "type": "integer"
+            },
+            {
+              "in": "body",
+              "name": "body",
+              "required": true,
+              "schema": {
+                "$ref": "#/definitions/Wildlife"
+              }
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "Wildlife entry updated successfully"
+            },
+            "404": {
+              "description": "Wildlife entry not found"
+            }
+          }
+        },
+        "delete": {
+          "summary": "Delete a specific wildlife entry",
+          "parameters": [
+            {
+              "in": "path",
+              "name": "SightingID",
+              "required": true,
+              "type": "integer"
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "Wildlife entry deleted successfully"
+            },
+            "404": {
+              "description": "Wildlife entry not found"
+            }
+          }
+        }
+      }
+    },
+    "definitions": {
+      "Trail": {
+        "type": "object",
+        "properties": {
+          "TrailID": { "type": "integer" },
+          "Name": { "type": "string" },
+          "Description": { "type": "string" },
+          "Distance": { "type": "number" },
+          "EstimatedTime": { "type": "string" },
+          "Type": { "type": "string" }
+        }
+      },
+      "TrailLog": {
+        "type": "object",
+        "properties": {
+          "LogID": { "type": "integer" },
+          "TrailID": { "type": "integer" },
+          "TrailName": { "type": "string" },
+          "AddedBy": { "type": "string" },
+          "AddedTimestamp": { "type": "string", "format": "date-time" }
+        }
+      },
+      "TrailSection": {
+        "type": "object",
+        "properties": {
+          "SectionID": { "type": "integer" },
+          "TrailID": { "type": "integer" },
+          "SectionName": { "type": "string" },
+          "Distance": { "type": "number" },
+          "DifficultyLevel": { "type": "string" },
+          "TerrainType": { "type": "string" }
+        }
+      },
+      "Wildlife": {
+        "type": "object",
+        "properties": {
+          "SightingID": { "type": "integer" },
+          "TrailID": { "type": "integer" },
+          "SpeciesName": { "type": "string" },
+          "Frequency": { "type": "string" },
+          "Description": { "type": "string" }
+        }
+      }
+    }
+  }
+  
